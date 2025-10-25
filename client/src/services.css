@@ -1,0 +1,58 @@
+/* 
+  File: services.css
+  Student: Shohely Akkas
+  Student ID: 301257632
+  Date: Sept 24, 2025
+  Description: Styling for the Services page of the portfolio site.
+*/
+
+/* ===== SERVICES PAGE TITLE STYLES ===== */
+.servicesTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #130114;
+    margin-bottom: 0.5rem;
+}
+
+/* ----- Services Description Styles ----- */
+.servicesDesc {
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== SERVICES GRID LAYOUT ===== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* ===== SERVICE CARD STYLES ===== */
+.service-card {
+    background: #d33bd81e;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 10px 4px 10px #310a9c1a;
+    text-align: left;
+}
+
+/* ----- Service Card Hover Effects ----- */
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ----- Service Card Title Styles ----- */
+.service-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #0828dd;
+}
+
+/* ----- Service Card Description Styles ----- */
+.service-card p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #120113;
+}

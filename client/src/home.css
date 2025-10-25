@@ -1,0 +1,83 @@
+/* 
+  File: home.css
+  Student: Shohely Akkas
+  Student ID: 301257632
+  Date: Sept 24, 2025
+  Description: Styling for the Home page of the portfolio site.
+*/
+
+/* ===== GLOBAL HTML STYLES ===== */
+html {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== INTRODUCTION SECTION STYLES ===== */
+/* ----- Main Headline Styles ----- */
+.introHeadline {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #004d40;
+    /* optional: deep teal for contrast */
+    line-height: 1.4;
+}
+
+/* ----- Introduction Section Layout ----- */
+#intro {
+    position: relative;
+    font-size: x-large;
+}
+
+/* ===== BACKGROUND IMAGE STYLES ===== */
+.bg {
+    position: absolute;
+    top: -4em;
+    right: 0;
+    z-index: -1;
+    object-fit: cover;
+    height: 100vh;
+}
+
+/* ===== INTRODUCTION CONTENT STYLES ===== */
+.introContent {
+    padding: 1em;
+    font-size: 1rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* ----- Hello Text Styles ----- */
+.hello {
+    font-size: 1.75rem;
+    font-weight: 100;
+}
+
+/* ----- Name Highlighting Styles ----- */
+.introName {
+    color: yellow;
+}
+
+/* ----- Introduction Paragraph Styles ----- */
+.introPara {
+    font-size: medium;
+    font-weight: 100;
+}
+
+/* ===== PROFILE IMAGE STYLES ===== */
+.bbg {
+    border-radius: 50%;
+    margin: 1rem 0;
+}
+
+/* ===== BUTTON STYLES ===== */
+.btn {
+    background: white;
+    margin: 1rem 0;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 2rem;
+}

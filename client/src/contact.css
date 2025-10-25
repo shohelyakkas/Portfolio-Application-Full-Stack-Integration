@@ -1,0 +1,78 @@
+/* 
+  File: contact.css
+  Student: Shohely Akkas
+  Student ID: 301257632
+  Date: Sept 24, 2025
+  Description: Styling for the Contact page of the portfolio site.
+*/
+
+/* ===== CONTACT FORM STYLES ===== */
+#ffp {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* ----- Form Label Styles ----- */
+#ffp label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* ----- Input Field Styles ----- */
+#ffp input[type="text"],
+#ffp input[type="email"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* ----- Input Focus States ----- */
+#ffp input[type="text"]:focus,
+#ffp input[type="email"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+/* ===== SUBMIT BUTTON STYLES ===== */
+.submit {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.submit:hover {
+    background-color: #45a049;
+}
+
+/* ===== CONTACT INFORMATION STYLES ===== */
+.contact-info {
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+/* ===== TEXTAREA STYLES ===== */
+textarea {
+    width: 95%;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 1rem;
+}

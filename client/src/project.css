@@ -1,0 +1,86 @@
+/* 
+  File: project.css
+  Student: Shohely Akkas
+  Student ID: 301257632
+  Date: Sept 24, 2025
+  Description: Styling for the Projects page of the portfolio site.
+*/
+
+/* ===== PROJECTS SECTION STYLES ===== */
+#works {
+    margin: 0 auto;
+    min-height: calc(100vh - 4rem);
+    width: 100%;
+    max-width: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+/* ----- Section Title Styles ----- */
+.worksTitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/* ----- Section Description Styles ----- */
+.worksDesc {
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* ===== PROJECT GRID STYLES ===== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+}
+
+/* ===== PROJECT CARD STYLES ===== */
+.project-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+}
+
+/* ----- Project Image Styles ----- */
+.worksImg {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* ----- Project Information Styles ----- */
+.project-info {
+    padding: 1rem;
+}
+
+/* ===== PROJECT BUTTON STYLES ===== */
+.github-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1.2rem;
+    border-radius: 1rem;
+    background: #007acc;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.github-btn:hover {
+    background: #005fa3;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media screen and (max-width: 600px) {
+    .worksImg {
+        height: 150px;
+    }
+}
