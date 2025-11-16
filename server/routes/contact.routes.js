@@ -1,5 +1,6 @@
 import express from 'express'
 import contactCtrl from '../controllers/contact.controller.js'
+import authCtrl from '../controllers/auth.controller.js'
 
 const router = express.Router()
 
@@ -7,8 +8,9 @@ const router = express.Router()
 // Methods: GET (list), POST (create), DELETE (removeAll)
 router.route('/api/contacts')
     .get(contactCtrl.list)
+    // creating contacts is public (contact form submissions). Deleting all contacts is admin-only.
     .post(contactCtrl.create)
-    .delete(contactCtrl.removeAll)
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.removeAll)
 
 // Middleware to load a contact by ID before read, update, or delete operations
 router.param('id', contactCtrl.contactByID)
@@ -17,7 +19,7 @@ router.param('id', contactCtrl.contactByID)
 // Methods: GET (read), PUT (update), DELETE (remove)
 router.route('/api/contacts/:id')
     .get(contactCtrl.read)
-    .put(contactCtrl.update)
-    .delete(contactCtrl.remove)
+    .put(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.update)
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.remove)
 
 export default router

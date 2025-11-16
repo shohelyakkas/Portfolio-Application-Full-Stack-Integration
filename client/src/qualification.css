@@ -1,0 +1,54 @@
+/*
+  File: qualification.css
+  Student: Shohely Akkas
+  Student ID: 301257632
+  Date: Sept 24, 2025
+  Description: Styling for the Qualifications page of the portfolio site.
+*/
+
+/* ===== QUALIFICATION LIST STYLES ===== */
+.qualification-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.qualification-item {
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.qualification-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a3a52;
+    margin-bottom: 8px;
+}
+
+.qualification-description {
+    color: #555;
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.qualification-completion {
+    color: #333;
+    font-size: 14px;
+}
+
+.qualification-delete-btn {
+    margin-top: 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.qualification-delete-btn:hover {
+    background-color: #c82333;
+}

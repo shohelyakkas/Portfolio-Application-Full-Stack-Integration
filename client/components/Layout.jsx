@@ -13,15 +13,61 @@
 /* Import Link component from React Router for navigation */
 /* Import logo image asset for header display */
 /* Note: index.css is globally imported in main.jsx */
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../src/assets/logo.png';
+import auth from '../src/auth.js';
 
 /* ===== LAYOUT COMPONENT ===== */
 export default function Layout() {
+    const navigate = useNavigate()
+
+    const [authState, setAuthState] = useState(auth.isAuthenticated())
+
+    useEffect(() => {
+        const handler = () => setAuthState(auth.isAuthenticated())
+        window.addEventListener('authChange', handler)
+        return () => window.removeEventListener('authChange', handler)
+    }, [])
+
+    const handleSignout = () => {
+        auth.signout(() => {
+            // after signout redirect to home
+            navigate('/')
+        })
+    }
+
+    const isAuth = authState
+
     /* ----- Component JSX Structure ----- */
     return (
         <>
+            {/* User Menu - Top Right Corner */}
+            <div style={{
+                position: 'absolute',
+                top: '20px',
+                right: '40px',
+                fontSize: 'large'
+            }}>
+                <nav style={{ float: 'none' }}>
+                    {isAuth ? (
+                        <>
+                            {/* Users list (visible to signed-in users) */}
+                            <Link to="/users">Users</Link>
+                            {' '}| <Link to="/profile">Profile</Link>
+                            {/* show user name next to profile link */}
+                            {' '}<span style={{ marginLeft: 6, color: '#333' }}>({isAuth.user.name})</span>
+                            {' '}| <button onClick={handleSignout} style={{ background: 'transparent', border: 'none', color: 'blue', cursor: 'pointer', fontSize: 'inherit' }}>Sign Out</button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/signin">Sign In</Link>
+                            {' '}| <Link to="/signup"> Sign Up</Link>
+                        </>
+                    )}
+                </nav>
+            </div>
+
             {/* Portfolio Logo */}
             <img src={logo} alt="logo" className="logo" width="80px" height="80px" />
 
@@ -33,17 +79,16 @@ export default function Layout() {
                 color: 'blue',
             }}>My Portfolio</h1>
 
-            {/* Navigation Menu with specific links */}
-            <nav>
+            {/* Main Navigation Menu - Centered */}
+            <nav style={{ fontSize: 'x-large', marginBottom: '20px' }}>
                 <Link to="/">Home</Link> |
-                <Link to="/about">About</Link> |
-                <Link to="/services">Services</Link> |
-                <Link to="/project">Projects</Link> |
-                <Link to="/contact">Contact</Link>
+                <Link to="/about"> About Me</Link> |
+                <Link to="/services"> Services</Link> |
+                <Link to="/qualification"> Qualifications</Link> |
+                <Link to="/project"> Projects</Link> |
+                <Link to="/contact"> Contact With Me</Link>
             </nav>
-            {/* Spacing */}
-            <br />
-            <br />
+
             {/* Horizontal Divider */}
             <hr className="horizontal-divider" />
         </>

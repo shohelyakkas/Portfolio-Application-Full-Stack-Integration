@@ -24,6 +24,8 @@ const signin = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email
+                ,
+                role: user.role
             }
         })
     } catch (err) {
@@ -57,9 +59,44 @@ const hasAuthorization = (req, res, next) => {
     next()
 }
 
+// Middleware to allow action if the requester is the profile owner OR an admin
+const isAdminOrSelf = async (req, res, next) => {
+    try {
+        // owner
+        const owner = req.profile && req.auth && req.profile._id == req.auth._id
+        if (owner) return next()
+
+        // otherwise check if requester is admin
+        const requester = await User.findById(req.auth && req.auth._id)
+        if (!requester) return res.status(401).json({ error: 'User not found' })
+        if (requester.role === 'admin') return next()
+
+        return res.status(403).json({ error: 'User is not authorized' })
+    } catch (err) {
+        return res.status(401).json({ error: 'Could not verify authorization.' })
+    }
+}
+
+// Middleware to check admin role
+const isAdmin = async (req, res, next) => {
+    try {
+        // req.auth is set by requireSignin and contains _id
+        const user = await User.findById(req.auth && req.auth._id)
+        if (!user) return res.status(401).json({ error: 'User not found' })
+        if (user.role !== 'admin') {
+            return res.status(403).json({ error: 'Admin resource. Access denied.' })
+        }
+        next()
+    } catch (err) {
+        return res.status(401).json({ error: 'Could not verify admin.' })
+    }
+}
+
 export default {
     signin,
     signout,
     requireSignin,
-    hasAuthorization
+    hasAuthorization,
+    isAdminOrSelf,
+    isAdmin
 }

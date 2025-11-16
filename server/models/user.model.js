@@ -14,21 +14,23 @@ const UserSchema = new mongoose.Schema({
     salt: String,
     created: { type: Date, default: Date.now },
     updated: { type: Date }
+    ,
+    role: { type: String, enum: ['user', 'admin'], default: 'user' }
 });
 
 // Virtual field for password
 UserSchema.virtual('password')
-    .set(function(password) {
+    .set(function (password) {
         this._password = password;
         this.salt = this.makeSalt();
         this.hashed_password = this.encryptPassword(password);
     })
-    .get(function() {
+    .get(function () {
         return this._password;
     });
 
 // Password validation
-UserSchema.path('hashed_password').validate(function() {
+UserSchema.path('hashed_password').validate(function () {
     if (this._password && this._password.length < 6) {
         this.invalidate('password', 'Password must be at least 6 characters.');
     }
@@ -39,10 +41,10 @@ UserSchema.path('hashed_password').validate(function() {
 
 // Instance methods
 UserSchema.methods = {
-    authenticate: function(plainText) {
+    authenticate: function (plainText) {
         return this.encryptPassword(plainText) === this.hashed_password;
     },
-    encryptPassword: function(password) {
+    encryptPassword: function (password) {
         if (!password) return '';
         try {
             return crypto
@@ -53,7 +55,7 @@ UserSchema.methods = {
             return '';
         }
     },
-    makeSalt: function() {
+    makeSalt: function () {
         return Math.round((new Date().valueOf() * Math.random())) + '';
     }
 };

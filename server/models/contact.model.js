@@ -17,6 +17,13 @@ const ContactSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Please fill a valid email address'],
         required: 'Email is required'
     },
+    message: {
+        type: String,
+        trim: true,
+        default: '',
+        minlength: [0, 'Message is too short'],
+        maxlength: [200, 'Message is too long']
+    }
     // Mongoose automatically adds an '_id' field
 })
 

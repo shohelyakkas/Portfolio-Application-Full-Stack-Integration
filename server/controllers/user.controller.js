@@ -28,15 +28,16 @@ const list = async (req, res) => {
 
 const userByID = async (req, res, next, id) => {
     try {
-        let user = await User.findById(id).select('name email updated created')
+        // include role so authorization decisions can be made by middleware
+        let user = await User.findById(id).select('name email updated created role')
         if (!user)
-            return res.status('404').json({
+            return res.status(404).json({
                 error: "User not found"
             })
         req.profile = user
         next()
     } catch (err) {
-        return res.status('400').json({
+        return res.status(400).json({
             error: "Could not retrieve user"
         })
     }

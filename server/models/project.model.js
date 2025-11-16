@@ -25,6 +25,16 @@ const ProjectSchema = new mongoose.Schema({
     description: {
         type: String,
         trim: true
+    },
+    imageUrl: {
+        type: String,
+        trim: true,
+        default: ''
+    },
+    projectUrl: {
+        type: String,
+        trim: true,
+        default: ''
     }
 })
 

@@ -13,8 +13,8 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        // Selects only the necessary contact fields for a list view
-        let contacts = await Contact.find().select('firstname lastname email')
+        // Selects contact fields for list view, including message
+        let contacts = await Contact.find().select('firstname lastname email message')
         res.json(contacts)
     } catch (err) {
         return res.status(400).json({ error: errorHandler.getErrorMessage(err) })
@@ -23,13 +23,13 @@ const list = async (req, res) => {
 
 const contactByID = async (req, res, next, id) => {
     try {
-        let contact = await Contact.findById(id).select('firstname lastname email')
+        let contact = await Contact.findById(id).select('firstname lastname email message')
         if (!contact)
-            return res.status('404').json({ error: "Contact not found" })
+            return res.status(404).json({ error: "Contact not found" })
         req.contact = contact
         next()
     } catch (err) {
-        return res.status('400').json({ error: "Could not retrieve contact by ID" })
+        return res.status(400).json({ error: "Could not retrieve contact by ID" })
     }
 }
 
@@ -55,7 +55,7 @@ const remove = async (req, res) => {
     try {
         let contact = req.contact
         let deletedContact = await contact.deleteOne()
-        res.json(deletedContact)
+        res.json({ message: "Contact deleted successfully!" })
     } catch (err) {
         return res.status(400).json({ error: errorHandler.getErrorMessage(err) })
     }

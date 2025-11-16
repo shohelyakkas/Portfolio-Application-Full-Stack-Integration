@@ -1,5 +1,6 @@
 
-// Configuration with environment-variable fallback. Set MONGO_URI in your environment
+// Configuration with environment-variable fallback. 
+// Set MONGO_URI in your environment
 // to avoid hardcoding credentials in the repo.
 const config = {
     env: process.env.NODE_ENV || 'development',

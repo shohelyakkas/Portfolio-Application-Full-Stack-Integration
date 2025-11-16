@@ -13,8 +13,8 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        // Fetches all projects, selecting key fields
-        let projects = await Project.find().select('title completion description')
+        // Fetches all projects, selecting key fields including owner name, URL and image
+        let projects = await Project.find().select('title completion description projectUrl imageUrl firstname lastname')
         res.json(projects)
     } catch (err) {
         return res.status(400).json({ error: errorHandler.getErrorMessage(err) })
@@ -23,13 +23,14 @@ const list = async (req, res) => {
 
 const projectByID = async (req, res, next, id) => {
     try {
-        let project = await Project.findById(id).select('title completion description firstname lastname email')
+        // Select all fields needed for editing
+        let project = await Project.findById(id).select('title completion description projectUrl imageUrl firstname lastname email')
         if (!project)
-            return res.status('404').json({ error: "Project not found" })
+            return res.status(404).json({ error: "Project not found" })
         req.project = project
         next()
     } catch (err) {
-        return res.status('400').json({ error: "Could not retrieve project by ID" })
+        return res.status(400).json({ error: "Could not retrieve project by ID" })
     }
 }
 

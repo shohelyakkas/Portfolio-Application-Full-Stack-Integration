@@ -1,0 +1,66 @@
+/*
+  File: Users.css
+  Student: Shohely Akkas
+  Student ID: 301257632
+  Date: Sept 24, 2025
+  Description: Styles for the Users component.
+*/
+
+.users-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.users-item {
+    margin-bottom: 16px;
+    padding: 16px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.users-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.users-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a3a52;
+    margin-bottom: 6px;
+}
+
+.users-email {
+    font-size: 14px;
+    color: #666;
+}
+
+.users-role-badge {
+    margin-left: 8px;
+    padding: 2px 8px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.users-delete-btn {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.users-delete-btn:hover {
+    background-color: #c82333;
+}

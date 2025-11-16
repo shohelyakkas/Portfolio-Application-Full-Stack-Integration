@@ -12,8 +12,8 @@ router.route('/api/users')
 // Route 2: Read, Update, and Delete a Specific User (These are PROTECTED)
 router.route('/api/users/:userId')
     .get(authCtrl.requireSignin, userCtrl.read) // Must be signed in to read user profile
-    .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update) // Must be signed in AND authorized to update
-    .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove) // Must be signed in AND authorized to delete
+    .put(authCtrl.requireSignin, authCtrl.isAdminOrSelf, userCtrl.update) // admin or self can update
+    .delete(authCtrl.requireSignin, authCtrl.isAdminOrSelf, userCtrl.remove) // admin or self can delete
 
 // Middleware to load user data when userId is present in the URL
 router.param('userId', userCtrl.userByID)

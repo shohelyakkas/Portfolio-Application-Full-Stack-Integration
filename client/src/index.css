@@ -111,4 +111,84 @@ nav {
   border: none;
   height: 3px;
   background-color: black;
+  width: 100%;
+  margin: 0;
+}
+
+/* Qualification form styles */
+.qual-form {
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.qual-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.qual-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.qual-title {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.qual-textarea {
+  width: 100%;
+  padding: 10px;
+  min-height: 80px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+.qual-date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.qual-date-row label {
+  margin: 0;
+  min-width: 140px;
+}
+
+.qual-date {
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 220px;
+}
+
+.qual-create-wrap {
+  margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .qual-row {
+    flex-direction: column;
+  }
+
+  .qual-date-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .qual-date-row label {
+    min-width: auto;
+  }
+
+  .qual-create-wrap {
+    margin-left: 0;
+    margin-top: 8px;
+  }
 }

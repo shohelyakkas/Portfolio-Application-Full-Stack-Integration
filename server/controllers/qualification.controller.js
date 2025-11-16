@@ -25,11 +25,11 @@ const qualificationByID = async (req, res, next, id) => {
     try {
         let qualification = await Qualification.findById(id).select('title completion description firstname lastname email')
         if (!qualification)
-            return res.status('404').json({ error: "Qualification not found" })
+            return res.status(404).json({ error: "Qualification not found" })
         req.qualification = qualification
         next()
     } catch (err) {
-        return res.status('400').json({ error: "Could not retrieve qualification by ID" })
+        return res.status(400).json({ error: "Could not retrieve qualification by ID" })
     }
 }
 

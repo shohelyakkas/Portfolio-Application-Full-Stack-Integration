@@ -1,5 +1,6 @@
 import express from 'express'
 import projectCtrl from '../controllers/project.controller.js'
+import authCtrl from '../controllers/auth.controller.js'
 
 const router = express.Router()
 
@@ -7,8 +8,9 @@ const router = express.Router()
 // Methods: GET (list), POST (create), DELETE (removeAll)
 router.route('/api/projects')
     .get(projectCtrl.list)
-    .post(projectCtrl.create)
-    .delete(projectCtrl.removeAll)
+    // Only admin can create or remove all projects
+    .post(authCtrl.requireSignin, authCtrl.isAdmin, projectCtrl.create)
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, projectCtrl.removeAll)
 
 // Middleware to load a project by ID before read, update, or delete operations
 router.param('id', projectCtrl.projectByID)
@@ -17,7 +19,7 @@ router.param('id', projectCtrl.projectByID)
 // Methods: GET (read), PUT (update), DELETE (remove)
 router.route('/api/projects/:id')
     .get(projectCtrl.read)
-    .put(projectCtrl.update)
-    .delete(projectCtrl.remove)
+    .put(authCtrl.requireSignin, authCtrl.isAdmin, projectCtrl.update)
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, projectCtrl.remove)
 
 export default router

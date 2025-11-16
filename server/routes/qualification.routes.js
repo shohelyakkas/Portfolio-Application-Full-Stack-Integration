@@ -1,5 +1,6 @@
 import express from 'express'
 import qualificationCtrl from '../controllers/qualification.controller.js'
+import authCtrl from '../controllers/auth.controller.js'
 
 const router = express.Router()
 
@@ -7,8 +8,8 @@ const router = express.Router()
 // Methods: GET (list), POST (create), DELETE (removeAll)
 router.route('/api/qualifications')
     .get(qualificationCtrl.list)
-    .post(qualificationCtrl.create)
-    .delete(qualificationCtrl.removeAll)
+    .post(authCtrl.requireSignin, authCtrl.isAdmin, qualificationCtrl.create)
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, qualificationCtrl.removeAll)
 
 // Middleware to load a qualification by ID before read, update, or delete operations
 router.param('id', qualificationCtrl.qualificationByID)
@@ -17,7 +18,7 @@ router.param('id', qualificationCtrl.qualificationByID)
 // Methods: GET (read), PUT (update), DELETE (remove)
 router.route('/api/qualifications/:id')
     .get(qualificationCtrl.read)
-    .put(qualificationCtrl.update)
-    .delete(qualificationCtrl.remove)
+    .put(authCtrl.requireSignin, authCtrl.isAdmin, qualificationCtrl.update)
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, qualificationCtrl.remove)
 
 export default router
