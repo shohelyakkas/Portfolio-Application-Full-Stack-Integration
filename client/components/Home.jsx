@@ -14,6 +14,7 @@
 /* Import Link component from React Router for navigation functionality */
 /* Import home page specific CSS styles */
 /* Import global CSS styles and layout configurations */
+import React from 'react'
 import BBG from '../src/assets/BBG.jpg';
 import hire from '../src/assets/hire.png';
 import { Link } from 'react-router-dom';
@@ -40,10 +41,22 @@ export default function Home() {
                     <img src={BBG} alt="profile" className="bbg" width="300" height="300" />
 
                     {/* Introduction Paragraph */}
-                    <p className="introPara">I am a passionate full-stack developer with a focus
+                    <p className="introPara">
+                        {/*
+                        I am a passionate full-stack developer with a focus
                         on building modern and responsive web applications. With a strong foundation
                         in both frontend and backend technologies.
-                        I strive to create seamless and efficient user experiences.
+                        I strive to create seamless and efficient user experiences. */}
+
+                        A passionate full‑stack developer focused on building modern, responsive web applications.
+                        With a strong foundation in both frontend and backend technologies, the goal is to deliver
+                        seamless, efficient, and user‑friendly experiences.
+                    </p>
+
+                    {/* New Paragraph - CI/CD Implementation */}
+                    <p className="introPara">
+                        This portfolio demonstrates continuous integration and deployment practices,
+                        ensuring rapid and reliable updates to production environments.
                     </p>
 
                     {/* Hire Me Button */}
